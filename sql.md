@@ -16,7 +16,7 @@
         "name" varchar(30) NOT NULL,
         "address" varchar(50) NOT NULL,
         "city" varchar(60) NOT NULL,
-        "state" varchar(30) NOT NULL,
+        "state" varchar(3) NOT NULL,
         "website" varchar(200) NOT NULL
     )
     ;
