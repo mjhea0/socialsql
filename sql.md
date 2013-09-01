@@ -5,7 +5,8 @@
 - Artist - name, stage name, genre
 - Producer - name, street address, city, state, website
 - Album - title, artists, producer, release date
-- An album can have many artists, but only one producer
+
+*An album can have many artists, but only one producer*
 
 # Create the tables (using a SQLite database)
 
@@ -92,10 +93,10 @@
 
 ## SQL
     
-    SELECT name, address, city, state, website FROM sqlsocial_producer;
-    SELECT address, city, state FROM sqlsocial_producer WHERE name = 'Producer 1';
-    SELECT stage_name FROM sqlsocial_artist;
-    SELECT genre FROM sqlsocial_artist WHERE name = 'Don';
+    SELECT name, address, city, state, website FROM socialsql_producer;
+    SELECT address, city, state FROM socialsql_producer WHERE name = 'Producer 1';
+    SELECT stage_name FROM socialsql_artist;
+    SELECT genre FROM socialsql_artist WHERE name = 'Don';
 
 ## Django ORM
 
@@ -103,8 +104,8 @@
 
 ## SQL
 
-    UPDATE sqlsocial_producer SET name = 'Ricky Rangles' WHERE name = 'Producer 1';
-    UPDATE sqlsocial_artist SET genre = 'Rock' WHERE name = 'Bob Dylan';
+    UPDATE socialsql_producer SET name = 'Ricky Rangles' WHERE name = 'Producer 1';
+    UPDATE socialsql_artist SET genre = 'Rock' WHERE name = 'Bob Dylan';
 
 ## Django ORM
 
@@ -112,8 +113,8 @@
 
 ## SQL
 
-    DELETE FROM sqlsocial_producer WHERE name = 'Ricky Rangles';
-    DELETE FROM sqlsocial_artist WHERE genre = 'Rock';
+    DELETE FROM socialsql_producer WHERE name = 'Ricky Rangles';
+    DELETE FROM socialsql_artist WHERE genre = 'Rock';
 
 ## Django ORM
 
@@ -143,7 +144,7 @@
 
 ## SQL
 
-    DECLARE artistCursor CURSOR FOR SELECT name, genre FROM sqlsocial_artist;
+    DECLARE artistCursor CURSOR FOR SELECT name, genre FROM socialsql_artist;
     DECLARE @name VARCHAR(256);
     DECLARE @genre VARCHAR(256);
     OPEN artistCursor;
@@ -151,7 +152,7 @@
     WHILE @@FETCH_STATUS = 0
     BEGIN
         IF @genre = 'Hip Hop'
-            DELETE FROM sqlsocial_artist WHERE name LIKE @name;
+            DELETE FROM socialsql_artist WHERE name LIKE @name;
 
         FETCH NEXT FROM artistCursor;
     END
@@ -161,23 +162,23 @@
 # Where, order, limit, offset, group
 
     # Where
-    SELECT name FROM sqlsocial_artist WHERE genre = 'Hip Hop';
-    SELECT address FROM sqlsocial_producer WHERE name = 'Producer 1';
+    SELECT name FROM socialsql_artist WHERE genre = 'Hip Hop';
+    SELECT address FROM socialsql_producer WHERE name = 'Producer 1';
 
     # ORDER
-    SELECT stage_name, genre FROM sqlsocial_artist ORDER BY genre;
-    SELECT * FROM sqlsocial_producer ORDER BY address DESC;
+    SELECT stage_name, genre FROM socialsql_artist ORDER BY genre;
+    SELECT * FROM socialsql_producer ORDER BY address DESC;
 
     # LIMIT
-    SELECT * FROM sqlsocial_artist LIMIT 1, 3;
-    SELECT name FROM sqlsocial_producer LIMIT 0, 3;
+    SELECT * FROM socialsql_artist LIMIT 1, 3;
+    SELECT name FROM socialsql_producer LIMIT 0, 3;
 
     # OFFSET
-    SELECT stage_name FROM sqlsocial_artist LIMIT 1 OFFSET 2;
-    SELECT address FROM sqlsocial_producer LIMIT 2 OFFSET 1;
+    SELECT stage_name FROM socialsql_artist LIMIT 1 OFFSET 2;
+    SELECT address FROM socialsql_producer LIMIT 2 OFFSET 1;
 
     # GROUP
-    SELECT stage_name FROM sqlsocial_artist GROUP BY name;
+    SELECT stage_name FROM socialsql_artist GROUP BY name;
 
 ## SQL
 
