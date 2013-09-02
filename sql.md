@@ -94,6 +94,7 @@
 ## SQL
     
     SELECT name, address, city, state, website FROM socialsql_producer;
+    SELECT * from socialsql_producer;
     SELECT address, city, state FROM socialsql_producer WHERE name = 'Producer 1';
     SELECT stage_name FROM socialsql_artist;
     SELECT genre FROM socialsql_artist WHERE name = 'Don';
